@@ -38,3 +38,4 @@ yarn-debug.log*
 /vendor/bundle
 # coverage generate folder
 coverage
+.DS_Store
