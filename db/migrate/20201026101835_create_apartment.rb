@@ -7,6 +7,8 @@ class CreateApartment < ActiveRecord::Migration[6.0]
       t.integer :number_of_bedrooms
       t.integer :number_of_bathrooms
       t.string :picture
+
+      t.timestamps
     end
   end
 end

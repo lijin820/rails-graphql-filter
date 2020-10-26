@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_10_26_101835) do
     t.integer "number_of_bedrooms"
     t.integer "number_of_bathrooms"
     t.string "picture"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
