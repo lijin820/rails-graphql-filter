@@ -90,6 +90,8 @@ GEM
       railties
       sprockets-rails
     graphql (1.11.4)
+    graphql-query-resolver (0.2.0)
+      graphql (~> 1.0, >= 1.0.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
@@ -181,6 +183,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    search_object (1.2.4)
+    search_object_graphql (0.3.1)
+      graphql (~> 1.8)
+      search_object (~> 1.2.2)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -238,6 +244,7 @@ DEPENDENCIES
   forgery (= 0.8.1)
   graphiql-rails
   graphql
+  graphql-query-resolver
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
@@ -245,6 +252,8 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.2)
   rspec-rails
   sass-rails (>= 6)
+  search_object
+  search_object_graphql (= 0.3.1)
   selenium-webdriver
   simplecov
   spring

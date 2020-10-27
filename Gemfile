@@ -30,6 +30,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 # Use graphql-ruby
 gem 'graphql'
+gem 'forgery', '0.8.1'
+gem 'search_object'
+gem 'search_object_graphql', '0.3.1'
+gem 'graphql-query-resolver'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -46,7 +50,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'forgery', '0.8.1'
 end
 
 group :test do
