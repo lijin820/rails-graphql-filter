@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Exit if any subcommand fails
+set -e
+
+bin/rails webpacker:install
+bin/yarn install
+bin/webpack-dev-server

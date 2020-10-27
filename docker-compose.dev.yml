@@ -1,0 +1,49 @@
+version: "3.2"
+
+services:
+  api:
+    build: ./
+    command: 'bash -c ''bundle exec puma -p 3000 -C ./config/puma.rb'''
+    working_dir: /api
+    stdin_open: true
+    tty: true
+    environment:
+      PORT: 3000
+      RAILS_ENV: development
+      SECRET_KEY_BASE: development_secret
+    ports:
+      - '3000:3000'
+    links:
+      - postgresql
+      - webpacker
+    volumes:
+      - ./:/api
+
+  api_test:
+    build: ./
+    command: 'bash -c ''bin/rails test'''
+    working_dir: /api
+    environment:
+      RAILS_ENV: test
+    ports:
+      - '3005:3000'
+    links:
+      - postgresql
+    volumes:
+      - ./:/api
+
+  webpacker:
+    build: ./
+    command: 'bash -c ''bin/docker/webpack'''
+    working_dir: /api
+    volumes:
+      - ./:/api
+    ports:
+      - '3035:3035'
+
+  postgresql:
+    image: postgres:9.6
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
