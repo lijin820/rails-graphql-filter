@@ -12,8 +12,12 @@ class Resolvers::ApartmentSearch
   type [Types::ApartmentType]
 
   class ApartmentFilter < ::Types::BaseInputObject
-    argument :OR, [self], required: false
     argument :title_contains, String, required: false
+    argument :OR, [self], required: false
+    argument :price_gte, Float, required: false
+    argument :price_lte, Float, required: false
+    argument :sqm_gte, Float, required: false
+    argument :sqm_lte, Float, required: false
   end
 
   class ApartmentOrderBy < ::Types::BaseEnum
@@ -34,6 +38,10 @@ class Resolvers::ApartmentSearch
   def normalize_filters(value, branches = [])
     scope = Apartment.all
     scope = scope.where('title LIKE ?', "%#{value[:title_contains]}%") if value[:title_contains]
+    scope = scope.where('price <= ?', value[:price_lte]) if value[:price_lte]
+    scope = scope.where('price >= ?', value[:price_gte]) if value[:price_gte]
+    scope = scope.where('sqm <= ?', value[:sqm_lte]) if value[:sqm_lte]
+    scope = scope.where('sqm >= ?', value[:sqm_gte]) if value[:sqm_gte]
 
     branches << scope
 
