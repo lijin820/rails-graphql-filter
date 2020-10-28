@@ -34,6 +34,7 @@ gem 'forgery', '0.8.1'
 gem 'search_object'
 gem 'search_object_graphql', '0.3.1'
 gem 'graphql-query-resolver'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
