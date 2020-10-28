@@ -14,17 +14,17 @@
 
      `bundle install`
 
+* Database setup
+
+     `rails db:create db:migrate db:seed`
+
 * Running backend on local
 
      `rails s`
 
-* Generate random data
-
-     `rails db:seed`
-
 * Running unit test
 
-     `rails spec`
+     `rails test`
 
 ## Docker Development
 
