@@ -2,7 +2,7 @@ FROM ruby:2.6.6-stretch
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x
 
-RUN apt-get update && apt-get install -y && DEBIAN_FRONTEND=noninteractive apt-get install keyboard-configuration \
+RUN apt-get update && apt-get install \
   build-essential \
   postgresql-client \
   nodejs \
