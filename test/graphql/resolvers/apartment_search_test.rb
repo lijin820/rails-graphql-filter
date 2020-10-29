@@ -144,6 +144,50 @@ class Resolvers::ApartmentSearchTest < ActiveSupport::TestCase
     assert_equal(result.map(&:title).sort, [apartment1, apartment2, apartment3].map(&:title).sort)
   end
 
+  test 'case one for range filter with price_per_sqm_gte and price_per_sqm_lte' do
+    apartment1 = create(:apartment, price_per_sqm: 150)
+    apartment2 = create(:apartment, price_per_sqm: 120)
+    apartment3 = create(:apartment, price_per_sqm: 250)
+
+    result = find(
+      filter: {
+        price_per_sqm_gte: 220,
+        price_per_sqm_lte: 300,
+      }
+    )
+
+    assert_equal(result.map(&:title).sort, [apartment3].map(&:title).sort)
+  end
+
+  test 'case two for range filter with price_per_sqm_gte and price_per_sqm_lte' do
+    apartment1 = create(:apartment, price_per_sqm: 150)
+    apartment2 = create(:apartment, price_per_sqm: 120)
+    apartment3 = create(:apartment, price_per_sqm: 250)
+
+    result = find(
+      filter: {
+        price_per_sqm_gte: 100,
+        price_per_sqm_lte: 160,
+      }
+    )
+
+    assert_equal(result.map(&:title).sort, [apartment1, apartment2].map(&:title).sort)
+  end
+
+  test 'case three for range filter with price_per_sqm_gte and price_per_sqm_lte' do
+    apartment1 = create(:apartment, price_per_sqm: 150)
+    apartment2 = create(:apartment, price_per_sqm: 120)
+    apartment3 = create(:apartment, price_per_sqm: 250)
+
+    result = find(
+      filter: {
+        price_per_sqm_gte: 100,
+      }
+    )
+
+    assert_equal(result.map(&:title).sort, [apartment1, apartment2, apartment3].map(&:title).sort)
+  end
+
   test 'get appartments with corret bathroom count' do
     apartment1 = create(:apartment, number_of_bathrooms: 1)
     apartment2 = create(:apartment, number_of_bathrooms: 2)
