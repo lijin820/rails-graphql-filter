@@ -18,6 +18,8 @@ class Resolvers::ApartmentSearch
     argument :price_lte, Float, required: false
     argument :sqm_gte, Float, required: false
     argument :sqm_lte, Float, required: false
+    argument :number_of_bedroom, Integer, required: false
+    argument :number_of_bathroom, Integer, required: false
   end
 
   class ApartmentOrderBy < ::Types::BaseEnum
@@ -42,6 +44,8 @@ class Resolvers::ApartmentSearch
     scope = scope.where('price >= ?', value[:price_gte]) if value[:price_gte]
     scope = scope.where('sqm <= ?', value[:sqm_lte]) if value[:sqm_lte]
     scope = scope.where('sqm >= ?', value[:sqm_gte]) if value[:sqm_gte]
+    scope = scope.where('number_of_bedrooms = ?', value[:number_of_bedroom]) if value[:number_of_bedroom]
+    scope = scope.where('number_of_bathrooms = ?', value[:number_of_bathroom]) if value[:number_of_bathroom]
 
     branches << scope
 
