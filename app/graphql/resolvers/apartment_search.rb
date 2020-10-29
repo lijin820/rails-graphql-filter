@@ -16,6 +16,8 @@ class Resolvers::ApartmentSearch
     argument :OR, [self], required: false
     argument :price_gte, Float, required: false
     argument :price_lte, Float, required: false
+    argument :price_per_sqm_gte, Float, required: false
+    argument :price_per_sqm_lte, Float, required: false
     argument :sqm_gte, Float, required: false
     argument :sqm_lte, Float, required: false
     argument :number_of_bedroom, Integer, required: false
@@ -42,6 +44,8 @@ class Resolvers::ApartmentSearch
     scope = scope.where('title LIKE ?', "%#{value[:title_contains]}%") if value[:title_contains]
     scope = scope.where('price <= ?', value[:price_lte]) if value[:price_lte]
     scope = scope.where('price >= ?', value[:price_gte]) if value[:price_gte]
+    scope = scope.where('price_per_sqm <= ?', value[:price_per_sqm_lte]) if value[:price_per_sqm_lte]
+    scope = scope.where('price_per_sqm >= ?', value[:price_per_sqm_gte]) if value[:price_per_sqm_gte]
     scope = scope.where('sqm <= ?', value[:sqm_lte]) if value[:sqm_lte]
     scope = scope.where('sqm >= ?', value[:sqm_gte]) if value[:sqm_gte]
     scope = scope.where('number_of_bedrooms = ?', value[:number_of_bedroom]) if value[:number_of_bedroom]
