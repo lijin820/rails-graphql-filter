@@ -28,8 +28,8 @@ class Resolvers::ApartmentSearch
   end
 
   option :filter, type: ApartmentFilter, with: :apply_filter
-  option :first, type: types.Int, with: :apply_first
-  option :skip, type: types.Int, with: :apply_skip
+  option :limit, type: types.Int, with: :apply_limit
+  option :offset, type: types.Int, with: :apply_offset
   option :orderBy, type: ApartmentOrderBy, default: 'createdAt_DESC'
 
   def apply_filter(scope, value)
@@ -54,11 +54,11 @@ class Resolvers::ApartmentSearch
     branches
   end
 
-  def apply_first(scope, value)
+  def apply_limit(scope, value)
     scope.limit(value)
   end
 
-  def apply_skip(scope, value)
+  def apply_offset(scope, value)
     scope.offset(value)
   end
 

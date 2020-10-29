@@ -5,18 +5,18 @@ class Resolvers::ApartmentSearchTest < ActiveSupport::TestCase
     Resolvers::ApartmentSearch.call(nil, args, nil)
   end
 
-  test 'skip option' do
+  test 'offset option' do
     apartment = create(:apartment, title: 'old')
     create(:apartment, title: 'new')
 
-    assert_equal(find(skip: 1), [apartment])
+    assert_equal(find(offset: 1), [apartment])
   end
 
-  test 'first option' do
+  test 'limit option' do
     create(:apartment, title: 'old')
     apartment = create(:apartment, title: 'new')
 
-    assert_equal(find(first: 1), [apartment])
+    assert_equal(find(limit: 1), [apartment])
   end
 
   test 'filter option' do
@@ -142,5 +142,33 @@ class Resolvers::ApartmentSearchTest < ActiveSupport::TestCase
     )
 
     assert_equal(result.map(&:title).sort, [apartment1, apartment2, apartment3].map(&:title).sort)
+  end
+
+  test 'get appartments with corret bathroom count' do
+    apartment1 = create(:apartment, number_of_bathrooms: 1)
+    apartment2 = create(:apartment, number_of_bathrooms: 2)
+    apartment3 = create(:apartment, number_of_bathrooms: 3)
+
+    result = find(
+      filter: {
+        number_of_bathroom: 1,
+      }
+    )
+
+    assert_equal(result.map(&:title).sort, [apartment1].map(&:title).sort)
+  end
+
+  test 'get appartments with corret bedroom count' do
+    apartment1 = create(:apartment, number_of_bedrooms: 1)
+    apartment2 = create(:apartment, number_of_bedrooms: 2)
+    apartment3 = create(:apartment, number_of_bedrooms: 3)
+
+    result = find(
+      filter: {
+        number_of_bedroom: 1,
+      }
+    )
+
+    assert_equal(result.map(&:title).sort, [apartment1].map(&:title).sort)
   end
 end
