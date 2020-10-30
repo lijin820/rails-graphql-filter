@@ -25,6 +25,6 @@ puts '== Seeding database =='
     price_per_sqm: price_per_sqm,
     number_of_bedrooms: rand(1...10),
     number_of_bathrooms: rand(1...10),
-    picture: pictures[rand(0..pictures.size)]
+    picture: pictures[rand(0..pictures.size - 1)]
   )
 end
