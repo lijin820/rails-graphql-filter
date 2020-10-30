@@ -13,4 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-Rails.application.config.assets.precompile += %w( graphiql/rails/application.js graphiql/rails/application.css ) if Rails.env.development?
+# Rails.application.config.assets.precompile += %w( graphiql/rails/application.js graphiql/rails/application.css ) if Rails.env.development?
