@@ -14,7 +14,6 @@ puts '== Seeding database =='
     'https://dywf8esi8sang.cloudfront.net/pictures/8d681df3182c5127279cfc2e2b0c900e_large.jpg',
     'https://dywf8esi8sang.cloudfront.net/pictures/022cab299a16bc482a4d9bc19fb17a7e_large.jpg',
     'https://dywf8esi8sang.cloudfront.net/pictures/7f552901f1bc6d7745ee3931f50704f9_large.jpg',
-    'https://dywf8esi8sang.cloudfront.net/pictures/fe0c583dd1eff870789ab311921cb910_large.jpg',
     'https://dywf8esi8sang.cloudfront.net/pictures/2719e7aabc1f6e0a6f8ad71ae95ee6a9_large.jpg',
     'https://dywf8esi8sang.cloudfront.net/pictures/a6486e4dae7c94b6a1d1a8521f9f536a_large.jpg',
     'https://dywf8esi8sang.cloudfront.net/pictures/e907f83f984adb66086b9384ec2bb1bb_large.jpg',
